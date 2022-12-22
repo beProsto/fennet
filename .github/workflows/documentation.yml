@@ -28,7 +28,7 @@ jobs:
       - name: Install doxygen
         run: sudo apt install doxygen
       - name: Generate documentation
-        run: doxygen
+        run: make doc
       - name: Setup Pages
         uses: actions/configure-pages@v2
       - name: Upload artifact
