@@ -1,6 +1,6 @@
 #include <fennet/lib.h>
 
-int LIB_API
+int FEN_API
 doesItLookLikeImBoring()
 {
   return NAH;
