@@ -1,4 +1,4 @@
-name: Generate and deploy documentation as a static github page
+name: Documentation pages
 
 on:
   # Runs on pushes targeting the default branch
