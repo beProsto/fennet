@@ -27,3 +27,8 @@ else()
 	target_compile_definitions(${project_name} PRIVATE LIB_BUILD_SHARED)
 
 endif()
+
+
+# building examples
+link_libraries(${project_name})
+add_executable(HelloServer examples/HelloServer/main.c)
