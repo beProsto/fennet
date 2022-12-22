@@ -1,5 +1,5 @@
 PROJECT_NAME = "fennet"
 
-PROJECT_BRIEF = "Fast, simple, lightweight HTTP server library for C."
+PROJECT_BRIEF = "Fast, simple, lightweight HTTP server library for C"
 
 OUTPUT_DIRECTORY = docs/
