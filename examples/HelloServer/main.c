@@ -1,20 +1,17 @@
 /**
  * @file main.c
- * @brief HelloServer example source code.
+ * @brief HelloServer example.
  *
- * HelloServer is a simple example of fennet.
- * It serves an HTTP server that always responds with the text "Hello!".
+ * HelloServer is a simple example of fennet's usage, it
+ * serves an HTTP server that always responds with the text "Hello!".
  */
 
 #include <fennet/lib.h>
 #include <stdio.h>
 
 /**
- * @brief Main entry point of the program.
- *
- * A longer description.
+ * @brief Entry point of the HelloServer Example.
  */
-
 int
 main(int argc, char** argv)
 {
