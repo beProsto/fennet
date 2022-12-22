@@ -15,4 +15,4 @@ test:
 	echo "Temporarily not running any Tests."
 
 clean:
-	git clean -d -f -x ./build
+	git clean -d -f -x ./build ./docs
