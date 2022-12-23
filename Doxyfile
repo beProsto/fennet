@@ -6,6 +6,7 @@ USE_MDFILE_AS_MAINPAGE = README.md
 
 OPTIMIZE_OUTPUT_FOR_C = YES
 
+FULL_PATH_NAMES = YES
 SOURCE_BROWSER = YES
 INLINE_SOURCES = YES
 RECURSIVE = YES
@@ -22,7 +23,7 @@ EXCLUDE_PATTERNS  = */doxygen-awesome-css/* \
                     */src/* \
                     */.github/* 
 
-FULL_PATH_NAMES = YES
+HTML_HEADER = DoxygenHeader.html
 
 GENERATE_LATEX = NO
 
