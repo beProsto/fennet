@@ -36,7 +36,7 @@ jobs:
       - name: Submodules
         run: git submodule update --init --recursive 
       - name: Generate documentation
-        run: make doc
+        run: doxygen
       - name: Setup Pages
         uses: actions/configure-pages@v2
       - name: Upload artifact
