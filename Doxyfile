@@ -21,7 +21,8 @@ EXCLUDE_PATTERNS  = */doxygen-awesome-css/* \
                     */build/* \
                     */docs/* \
                     */src/* \
-                    */.github/* 
+                    */.github/* \
+                    */doxygen/* 
 
 HTML_HEADER = DoxygenHeader.html
 
