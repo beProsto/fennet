@@ -1,3 +1,10 @@
+/**
+ * @file api.h
+ * @brief Vital macros.
+ *
+ * This file contains definitions (macros) used all throughout the codebase.
+ */
+
 #pragma once
 
 // On windows, if compiling to a DLL,
