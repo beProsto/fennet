@@ -1,6 +1,6 @@
 PROJECT_NAME = "Fennet"
 PROJECT_LOGO = logo.svg
-PROJECT_BRIEF = "Fast, simple, lightweight HTTP server library for C"
+PROJECT_BRIEF = "Lightweight HTTP server library for C"
 
 USE_MDFILE_AS_MAINPAGE = README.md
 
@@ -12,7 +12,15 @@ RECURSIVE = YES
 
 HTML_DYNAMIC_MENUS = NO
 GENERATE_TREEVIEW = YES
+DISABLE_INDEX = NO
+FULL_SIDEBAR = NO
+HTML_EXTRA_STYLESHEET  = doxygen-awesome-css/doxygen-awesome.css
 
+EXCLUDE_PATTERNS  = */doxygen-awesome-css/* \
+                    */build/* \
+                    */docs/* \
+                    */src/* \
+                    */.github/* 
 
 FULL_PATH_NAMES = YES
 
