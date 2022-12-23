@@ -26,7 +26,8 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - name: Install doxygen
-        run: git clone https://github.com/doxygen/doxygen.git && cd doxygen && mkdir build && cd build && cmake -G "Unix Makefiles" .. && make && make install && cd ../..
+        run: sudo apt update && sudo apt upgrade && sudo apt install doxygen
+        # run: git clone https://github.com/doxygen/doxygen.git && cd doxygen && mkdir build && cd build && cmake -G "Unix Makefiles" .. && make && make install && cd ../..
       - name: Submodules
         run: git submodule update --init --recursive 
       - name: Generate documentation
