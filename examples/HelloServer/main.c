@@ -68,8 +68,9 @@ main(int argc, char** argv)
   read(connfd, buffer, 1024);
   printf("From client: %s\n", buffer);
 
-  // intentionally leak memory (do a little trolling)
-  write(connfd, "HTTP/1.1 200 OK\r\n\r\nAAAAAAAAHELPME", 1024);
+  const char* response = "HTTP/1.1 200 OK\nServer: Apache/0.8.4\nContent-type: "
+                         "text/html\n\n<h1>AAAAAAAAHELPME</h1>\n";
+  write(connfd, response, sizeof(response));
 
   close(sockfd);
 }
