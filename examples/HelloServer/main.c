@@ -73,3 +73,13 @@ main(int argc, char** argv)
 
   close(sockfd);
 }
+
+/** Wiem że między nami już jakiś czas nie jest najlepiej, i, jak już ci pisałem
+dawno temu chciałem te nieznaski porzucić mówiąc ci po prostu o wszystkim co
+mnie martwi na głos, z nadzieją że te zmartwienia, gdy ci je już wyjawię, po
+prostu znikną, bo po części dręczą mnie przez to że chowam je w sobie. Nie
+wiedziałem tylko, chociaż i tego się bałem, że mogłem nieumyślnie doprowadzić
+do punktu w którym nie chcesz się ze mną przez to wszystko zadawać... */
+
+/* I martwi mnie właśnie to, czy przypadkiem to co tu napisałeś to nie
+ * najzwyczajniej w świecie próba przygotowania mnie na to. */
