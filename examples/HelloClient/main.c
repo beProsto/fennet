@@ -17,7 +17,6 @@
 #include <unistd.h>
 
 #define PORT 8080
-#define SA struct sockaddr
 
 /**
  * @brief Entry point of the HelloClient Example.
@@ -53,6 +52,8 @@ main(int argc, char** argv)
   char ret[1024 * 30] = {};
   read(main_socket, ret, sizeof(ret));
   printf("\nServer's reply:\n%s\n", ret);
+
+  close(main_socket);
 
   return 0;
 }
