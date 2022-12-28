@@ -15,7 +15,6 @@
 #include <sys/socket.h>
 #include <unistd.h>
 
-#define MAX 80
 #define PORT 8080
 #define SA struct sockaddr
 
@@ -61,9 +60,11 @@ main(int argc, char** argv)
     "Sec-Fetch-Site: none\n"
     "Sec-Fetch-User: ?1\n\n";
 
-  write(main_socket, msg, strlen(msg));
+  write(main_socket, msg, sizeof(msg));
 
   char ret[1024 * 30] = {};
+  read(main_socket, ret, sizeof(ret));
+  read(main_socket, ret, sizeof(ret));
   read(main_socket, ret, sizeof(ret));
 
   printf("\nServer's reply:\n%s\n", ret);
