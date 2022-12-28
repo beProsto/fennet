@@ -30,3 +30,4 @@ endif()
 # Link the library we just compiled and compile the examples with it
 link_libraries(${project_name})
 add_executable(HelloServer examples/HelloServer/main.c)
+add_executable(HelloClient examples/HelloClient/main.c)
