@@ -24,7 +24,8 @@
 int
 main(int argc, char** argv)
 {
-  int sockfd, connfd, len;
+  int sockfd, connfd;
+  unsigned int len;
   struct sockaddr_in servaddr = {}, cli;
 
   // socket create and verification
@@ -63,14 +64,14 @@ main(int argc, char** argv)
   } else
     printf("server accept the client...\n");
 
-  char buffer[1024] = {};
+  char buffer[1024 * 10] = {};
 
-  read(connfd, buffer, 1024);
+  read(connfd, buffer, sizeof(buffer));
   printf("From client: %s\n", buffer);
 
   const char* response = "HTTP/1.1 200 OK\nServer: Apache/0.8.4\nContent-type: "
-                         "text/html\n\n<h1>AAAAAAAAHELPME</h1>\n";
-  write(connfd, response, sizeof(response));
+                         "text/html\n\n<h1>AAAAAAAAHELPME</h1>d\n";
+  write(connfd, response, strlen(response));
 
   close(sockfd);
 }
