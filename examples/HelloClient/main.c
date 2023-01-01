@@ -8,6 +8,7 @@
 
 #include <fennet/lib.h>
 
+#ifndef _WIN32
 #include <arpa/inet.h>
 #include <netinet/in.h>
 #include <stdio.h>
@@ -15,6 +16,7 @@
 #include <string.h>
 #include <sys/socket.h>
 #include <unistd.h>
+#endif
 
 #define PORT 8080
 
@@ -24,6 +26,7 @@
 int
 main(int argc, char** argv)
 {
+#ifndef _WIN32
   // Socket interface initialisation
   int main_socket = socket(AF_INET, SOCK_STREAM, IPPROTO_TCP);
   if (main_socket == -1) {
@@ -54,6 +57,7 @@ main(int argc, char** argv)
   printf("\nServer's reply:\n%s\n", ret);
 
   close(main_socket);
+#endif
 
   return 0;
 }
