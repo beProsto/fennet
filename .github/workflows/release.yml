@@ -38,7 +38,7 @@ jobs:
           name: windows-artifact
           path: gh_windows_artifacts
       - name: Build step
-        run: make G=Ninja
+        run: make
       - name: Test step
         run: make test
       - uses: "marvinpinto/action-automatic-releases@latest"
