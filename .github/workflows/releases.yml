@@ -1,7 +1,7 @@
 name: Release
 
 on:
-  # Run on commits beginning with v
+  # Run pushes for tags beginning with v {git tag v0.0.1 && git push origin v0.0.1}
   push:
     tags:
       - "v*"
