@@ -13,6 +13,7 @@ jobs:
   release:
     runs-on: "ubuntu-latest"
     steps:
+      - uses: actions/checkout@v3
       - name: See local files
         run: ls -lah
       - name: Testing them actions out
