@@ -19,10 +19,10 @@ jobs:
       - name: Test step
         run: make test
       - name: Package build artifacts
-        run: mkdir gh_windows_artifacts & 
-              copy build\*.dll gh_windows_artifacts & 
-              copy build\*.lib gh_windows_artifacts &
-              copy build\*.a gh_windows_artifacts &
+        run: mkdir gh_windows_artifacts &&
+              copy build\*.dll gh_windows_artifacts &&
+              copy build\*.lib gh_windows_artifacts &&
+              copy build\*.a gh_windows_artifacts &&
               copy build\*.so gh_windows_artifacts
       - uses: actions/upload-artifact@master
         with:
@@ -47,7 +47,7 @@ jobs:
           prerelease: true
           title: "Development Test Release"
           files: |
-            LICENSE.txt
+            LICENSE
             build/*.so
             build/*.a
             build/*.dll
