@@ -23,3 +23,9 @@ jobs:
           repo_token: "${{ secrets.GITHUB_TOKEN }}"
           prerelease: true
           title: "Development Build"
+          files: |
+            LICENSE.txt
+            build/*.so
+            build/*.a
+            build/*.dll
+            build/*.lib
