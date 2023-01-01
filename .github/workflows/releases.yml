@@ -1,0 +1,16 @@
+name: Release
+
+# Run on commits beginning with v
+on:
+  push:
+    tags:
+      - "v*"
+
+jobs:
+  release:
+    runs-on: "ubuntu-latest"
+    steps:
+      - name: Testing them actions out
+        run: echo "Test Action"
+      - name: Yet another test
+        run: echo "Another Test"
