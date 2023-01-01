@@ -29,6 +29,7 @@ jobs:
           name: windows-artifact
           path: gh_windows_artifacts
   linux:
+    needs: windows
     runs-on: "ubuntu-latest"
     steps:
       - uses: actions/checkout@v3
