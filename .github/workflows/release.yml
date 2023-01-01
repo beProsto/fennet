@@ -10,10 +10,32 @@ on:
   workflow_dispatch:
 
 jobs:
-  release:
+  windows:
+    runs-on: "windows-latest"
+    steps:
+      - uses: actions/checkout@v3
+      - name: Build step
+        run: make
+      - name: Test step
+        run: make test
+      - name: Package build artifacts
+        run: mkdir gh_windows_artifacts & 
+              copy build\*.dll gh_windows_artifacts & 
+              copy build\*.lib gh_windows_artifacts &
+              copy build\*.a gh_windows_artifacts &
+              copy build\*.so gh_windows_artifacts
+      - uses: actions/upload-artifact@master
+        with:
+          name: windows-artifact
+          path: gh_windows_artifacts
+  linux:
     runs-on: "ubuntu-latest"
     steps:
       - uses: actions/checkout@v3
+      - uses: actions/download-artifact@master
+        with:
+          name: windows-artifact
+          path: gh_windows_artifacts
       - name: Build step
         run: make
       - name: Test step
@@ -22,10 +44,14 @@ jobs:
         with:
           repo_token: "${{ secrets.GITHUB_TOKEN }}"
           prerelease: true
-          title: "Development Build"
+          title: "Development Test Release"
           files: |
             LICENSE.txt
             build/*.so
             build/*.a
             build/*.dll
             build/*.lib
+            gh_windows_artifacts/*.so
+            gh_windows_artifacts/*.a
+            gh_windows_artifacts/*.dll
+            gh_windows_artifacts/*.lib
