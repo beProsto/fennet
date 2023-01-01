@@ -14,9 +14,17 @@ jobs:
     runs-on: "ubuntu-latest"
     steps:
       - uses: actions/checkout@v3
-      - name: See local files
-        run: ls -lah
-      - name: Testing them actions out
-        run: echo "Test Action"
-      - name: Yet another test
-        run: echo "Another Test"
+      - name: Build step
+        run: make
+      - name: Test step
+        run: make test
+      - name: Package step
+      - uses: "marvinpinto/action-automatic-releases@latest"
+        with:
+          repo_token: "${{ secrets.GITHUB_TOKEN }}"
+          prerelease: true
+          title: "Development Build"
+          files: |
+            LICENSE
+            ./build/*.so
+            ./build/*.a
