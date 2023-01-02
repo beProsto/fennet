@@ -19,15 +19,11 @@ jobs:
       - name: Test step
         run: make test
       - name: Package build artifacts
-        run: mkdir gh_windows_artifacts &&
-              copy build\*.dll gh_windows_artifacts &&
-              copy build\*.lib gh_windows_artifacts &&
-              copy build\*.a gh_windows_artifacts &&
-              copy build\*.so gh_windows_artifacts
+        run:  make pkg NAME="windows-gcc"
       - uses: actions/upload-artifact@master
         with:
           name: windows-artifact
-          path: gh_windows_artifacts
+          path: packaged
   linux:
     needs: windows
     runs-on: "ubuntu-latest"
@@ -36,11 +32,13 @@ jobs:
       - uses: actions/download-artifact@master
         with:
           name: windows-artifact
-          path: gh_windows_artifacts
+          path: packaged
       - name: Build step
         run: make
       - name: Test step
         run: make test
+      - name: Package build artifacts
+        run:  make pkg NAME="linux-gcc"
       - uses: "marvinpinto/action-automatic-releases@latest"
         with:
           repo_token: "${{ secrets.GITHUB_TOKEN }}"
@@ -48,11 +46,4 @@ jobs:
           title: "Development Test Release"
           files: |
             LICENSE
-            build/*.so
-            build/*.a
-            build/*.dll
-            build/*.lib
-            gh_windows_artifacts/*.so
-            gh_windows_artifacts/*.a
-            gh_windows_artifacts/*.dll
-            gh_windows_artifacts/*.lib
+            packaged/*

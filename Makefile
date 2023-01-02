@@ -16,5 +16,8 @@ test:
 doc:
 	doxygen
 
+pkg:
+	python3 ./workflow-scripts/packager.py $(NAME)
+
 clean:
 	git clean -d -f -x ./build ./docs
