@@ -21,7 +21,10 @@ toExport = []
 examplesFolderScan = os.scandir(path="examples")
 for entry in examplesFolderScan:
   if entry.is_dir():
-    toExport.append(str(entry.name))
+    fname = str(entry.name)
+    if os.name == 'nt':
+      fname += ".exe"
+    toExport.append(fname)
 
 buildFolderScan = os.scandir(path="build")
 for entry in buildFolderScan:
@@ -44,5 +47,5 @@ ext = ".tar.gz"
 if os.name == 'nt':
   pre = "..\\packaged\\"
   ext = ".zip"
-os.system("tar -cvzf "+pre+packageName+ext + cmdlinetopkg)
+os.system("tar -caf "+pre+packageName+ext + cmdlinetopkg)
 print("- Package '"+packageName+ext+"' Generated.")
