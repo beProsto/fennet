@@ -14,12 +14,15 @@ jobs:
     runs-on: "windows-latest"
     steps:
       - uses: actions/checkout@v3
-      - name: Build step
+      # Windows X86_64 - GCC
+      - name: MinGW X86_64 Build
         run: make G=Ninja
-      - name: Test step
         run: make test
-      - name: Package build artifacts
-        run:  make pkg NAME="windows-gcc"
+        run:  make pkg NAME="fennet-windows-x86_64-mingw"
+      - name: MSVC X86_64 Build
+        run: make G=Ninja CC=clang CXX=clang++
+        run: make test
+        run:  make pkg NAME="fennet-windows-x86_64-msvc"
       - uses: actions/upload-artifact@master
         with:
           name: windows-artifact
