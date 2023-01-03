@@ -64,6 +64,7 @@ jobs:
           make clean
       - name: GCC X86_32 Build
         run: |
+          sudo apt-get install gcc-multilib
           make CMAKE_FLAGS="-DCMAKE_C_COMPILER_ARG1=-m32 -DCMAKE_CXX_COMPILER_ARG1=-m32"
           make test
           make pkg NAME="fennet-linux-x86_32-gcc"
