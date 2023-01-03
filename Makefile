@@ -8,7 +8,7 @@ BT = Release
 usual: build-usual
 	cmake --build ./build -j $(J)
 build-usual:
-	cmake -B ./build -DCMAKE_EXPORT_COMPILE_COMMANDS=1 "-DCMAKE_C_COMPILER:FILEPATH=$(CC)" "-DCMAKE_CXX_COMPILER:FILEPATH=$(CXX)" "-DCMAKE_BUILD_TYPE=$(BT)" "-DLIBTYPE=$(LT)" -G "$(G)"
+	cmake -B ./build -DCMAKE_EXPORT_COMPILE_COMMANDS=1 "-DCMAKE_C_COMPILER:FILEPATH=$(CC)" "-DCMAKE_CXX_COMPILER:FILEPATH=$(CXX)" "-DCMAKE_BUILD_TYPE=$(BT)" "-DLIBTYPE=$(LT)" -G "$(G)" $(CMAKE_FLAGS)
 
 test:
 	echo "Temporarily not running any Tests."

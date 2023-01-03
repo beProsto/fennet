@@ -9,6 +9,8 @@ on:
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 
+# 
+
 jobs:
   windows:
     runs-on: "windows-latest"
@@ -20,11 +22,23 @@ jobs:
           make test
           make pkg NAME="fennet-windows-x86_64-mingw"
           make clean
+      - name: MinGW X86_32 Build
+        run: |
+          make G=Ninja CMAKE_FLAGS="-DCMAKE_C_COMPILER_ARG1=-m32 -DCMAKE_CXX_COMPILER_ARG1=-m32"
+          make test
+          make pkg NAME="fennet-windows-x86_32-mingw"
+          make clean
       - name: MSVC X86_64 Build
         run: |
           make G=Ninja CC=clang CXX=clang++
           make test
           make pkg NAME="fennet-windows-x86_64-msvc"
+          make clean
+      - name: MSVC X86_32 Build
+        run: |
+          make G=Ninja CMAKE_FLAGS="-DCMAKE_C_COMPILER_ARG1=-m32 -DCMAKE_CXX_COMPILER_ARG1=-m32" CC=clang CXX=clang++
+          make test
+          make pkg NAME="fennet-windows-x86_32-msvc"
           make clean
       - uses: actions/upload-artifact@master
         with:
@@ -47,6 +61,12 @@ jobs:
           make
           make test
           make pkg NAME="fennet-linux-x86_64-gcc"
+          make clean
+      - name: GCC X86_32 Build
+        run: |
+          make CMAKE_FLAGS="-DCMAKE_C_COMPILER_ARG1=-m32 -DCMAKE_CXX_COMPILER_ARG1=-m32"
+          make test
+          make pkg NAME="fennet-linux-x86_32-gcc"
           make clean
       - uses: "marvinpinto/action-automatic-releases@latest"
         with:
