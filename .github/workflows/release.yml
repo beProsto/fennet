@@ -14,7 +14,6 @@ jobs:
     runs-on: "windows-latest"
     steps:
       - uses: actions/checkout@v3
-      # Windows X86_64 - GCC
       - name: MinGW X86_64 Build
         run: |
           make G=Ninja
@@ -40,12 +39,15 @@ jobs:
         with:
           name: windows-artifact
           path: packaged
-      - name: Build step
-        run: make
-      - name: Test step
-        run: make test
-      - name: Package build artifacts
-        run:  make pkg NAME="linux-gcc"
+      - uses: geekyeggo/delete-artifact@v2
+        with:
+          name: windows-artifact
+      - name: GCC X86_64 Build
+        run: |
+          make
+          make test
+          make pkg NAME="fennet-linux-x86_64-gcc"
+          make clean
       - uses: "marvinpinto/action-automatic-releases@latest"
         with:
           repo_token: "${{ secrets.GITHUB_TOKEN }}"
