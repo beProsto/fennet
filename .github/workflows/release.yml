@@ -28,7 +28,7 @@ jobs:
           Expand-Archive -LiteralPath 'winlibs.zip' -DestinationPath "winlibs"
           $gccPath = Get-ChildItem -Path "winlibs" -File -Filter "i686-w64-mingw32-gcc.exe" -Recurse
           $gxxPath = Get-ChildItem -Path "winlibs" -File -Filter "i686-w64-mingw32-g++.exe" -Recurse
-          make G=Ninja CMAKE_FLAGS="-DCMAKE_C_COMPILER_ARG1=-m32 -DCMAKE_CXX_COMPILER_ARG1=-m32" CC=$gccPath.FullName CXX=$gxxPath.FullName
+          make G=Ninja CMAKE_FLAGS="-DCMAKE_C_COMPILER_ARG1=-m32 -DCMAKE_CXX_COMPILER_ARG1=-m32" CC=$gccPath CXX=$gxxPath
           make test
           make pkg NAME="fennet-windows-x86_32-mingw"
           make clean
