@@ -17,12 +17,14 @@ jobs:
       # Windows X86_64 - GCC
       - name: MinGW X86_64 Build
         run: make G=Ninja
-        run: make test
-        run:  make pkg NAME="fennet-windows-x86_64-mingw"
+              make test
+              make pkg NAME="fennet-windows-x86_64-mingw"
+              make clean
       - name: MSVC X86_64 Build
         run: make G=Ninja CC=clang CXX=clang++
-        run: make test
-        run:  make pkg NAME="fennet-windows-x86_64-msvc"
+              make test
+              make pkg NAME="fennet-windows-x86_64-msvc"
+              make clean
       - uses: actions/upload-artifact@master
         with:
           name: windows-artifact
