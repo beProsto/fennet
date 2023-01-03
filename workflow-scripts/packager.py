@@ -11,6 +11,10 @@
 import os
 import sys
 
+dash = "/"
+if os.name == 'nt':
+  dash = "\\"
+
 packageName = sys.argv[1]
 
 if not os.path.isdir("packaged"):
@@ -38,14 +42,15 @@ for entry in toExport:
   print(entry)
 
 # tar -cvzf ./packaged/packageName.zip ./build/*toExport
-os.chdir("build")
 cmdlinetopkg = ""
 for entry in toExport:
-  cmdlinetopkg += " "+entry
-pre = "../packaged/"
+  cmdlinetopkg += f" build{dash}"+entry
+for root, dirs, files in os.walk("include"):
+    for name in files:
+      cmdlinetopkg += " "+str(root)+dash+str(name)
+
 ext = ".tar.gz"
 if os.name == 'nt':
-  pre = "..\\packaged\\"
   ext = ".zip"
-os.system("tar -caf "+pre+packageName+ext + cmdlinetopkg)
+os.system(f"tar -caf packaged{dash}"+packageName+ext + cmdlinetopkg)
 print("- Package '"+packageName+ext+"' Generated.")
